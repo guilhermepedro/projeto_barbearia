@@ -1,0 +1,75 @@
+.form {
+    padding: 5px;
+    #title {
+        margin-bottom: 15px;
+        font-size: 30pt;
+    }
+    #inpN {
+        width: 100%;
+    }
+    #formul{
+      display: flex;
+      justify-content: space-between;
+    }
+    #imagemPerf{
+      margin-right: 15px;
+      .foto {
+        cursor: pointer;
+        width: 117px;
+        height: 100%;
+      }
+      .foto:hover {
+        background-color: rgb(0, 0, 0);
+        opacity: 0.4;
+      }
+      .mat-icon {
+        font-size: 30px;
+        color: rgb (black)
+      }
+      input[type="file"] {
+        display: none;
+      }
+      p{
+        font-size: 9pt;
+      }
+      .centInputImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .quantEstoque {
+        display: flex;
+        justify-content: space-between;
+        #quantEstoque {
+            float: left;
+            height: 2px;
+            width: 55%;
+        }
+        #categoria {
+            width: 40%;
+        }
+    }
+    #descricao {
+        width: 100%;
+        margin-top: -2%;
+    }
+    .toggle{
+        margin-bottom: 1rem;
+    }
+    .valor {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 5%;
+        .intval {
+            margin-right: 5%;
+            max-width: 50%;
+        }
+        #valor {
+            width: 86%;
+        }
+        #valorP {
+            width: 86%;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+<!-- Filtro da tabela -->
+<div class="row" [formGroup]="form">
+    <div class="col-md-4">
+        <mat-form-field appearance="standard" fxFlex="grow">
+            <mat-label>Pesquisar agendamento</mat-label>
+            <input matInput formControlName="filtro" (change)="filtrarAgendamentos()" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-2">
+        <mat-form-field appearance="standard" fxFlex="grow">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" (selectionChange)="filtrarAgendamentos()">
+                <mat-option value="aceito">Aceito</mat-option>
+                <mat-option value="pendente">Pendente</mat-option>
+                <mat-option value="recusado">Recusado</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-md-3">
+        <mat-form-field appearance="standard" fxFlex="grow">
+            <mat-label>Data Inicial</mat-label>
+            <input matInput formControlName="dtInicial" (dateChange)="filtrarAgendamentos()"
+                [matDatepicker]="startDate" />
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-md-3">
+        <mat-form-field appearance="standard" fxFlex="grow">
+            <mat-label>Data Final</mat-label>
+            <input formControlName="dtFinal" matInput (dateChange)="filtrarAgendamentos()" [matDatepicker]="endDate" />
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+</div>
+
+<div class="row" style="float: right;">
+    <div class="col">
+        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow" type="button"
+            (click)="limparFiltro()">Limpar <mat-icon>backspace</mat-icon></button>
+    </div>
+    <div class="col">
+        <button mat-button mat-raised-button color="primary" (click)="abrirModalCadastrarEditar()" fxFlex="grow">
+            Adicionar <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="col">
+        <button mat-button (click)="visualizar()" fxFlex="grow">
+            <mat-icon *ngIf="verLista">view_list</mat-icon>
+            <mat-icon *ngIf="verGrade">view_module</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div style="margin-top: 3rem;">
+    <!-- LOADING -->
+    <mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
+
+    <vex-lista-agendamentos *ngIf="verLista" [agendamentoHoje]="agendamentoHoje" [listaAgendamentos]="listaAgendamentos"
+        [dataSource]="dataSource" [displayedColumns]="displayedColumns"
+        (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.agendamento)"
+        (eventModalDeletar)="abrirModalDeletar($event.agendamento)"
+        (eventModalEditarStatus)="abrirModalEditarStatus($event.statusFinal, $event.agendamento)">
+    </vex-lista-agendamentos>
+
+    <vex-grade-agendamentos *ngIf="verGrade && listaAgendamentos.length" [listaAgendamentos]="listaAgendamentos"
+        (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.agendamento)"
+        (eventModalDeletar)="abrirModalDeletar($event.agendamento)">
+    </vex-grade-agendamentos>
+</div>

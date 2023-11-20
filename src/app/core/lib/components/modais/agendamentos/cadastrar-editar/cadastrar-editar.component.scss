@@ -1,0 +1,76 @@
+.form {
+  padding: 5px;
+
+
+  #title {
+    margin-bottom: 15px;
+    font-size: 30pt;
+  }
+
+  #inpN {
+    width: 100%;
+  }
+
+  .dualInput {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+
+    #tempoEst {
+      float: left;
+      height: 2px;
+      width: 55%;
+    }
+
+    #data {
+      float: left;
+      height: 2px;
+      width: 49%;
+    }
+
+    #resp {
+      float: left;
+      height: 2px;
+      width: 49%;
+    }
+
+    #categoria {
+      margin-left: 5%;
+    }
+
+    .minutos {
+      display: inline;
+      float: right;
+      height: 3px;
+      font-size: 10pt;
+      margin-top: -19px;
+    }
+  }
+
+  .valor {
+    display: flex;
+    justify-content: left;
+    margin-top: -15px;
+
+    .intval {
+      float: right;
+      max-width: 30%;
+    }
+
+    .intval2 {
+      margin-left: 5px;
+      float: right;
+      max-width: 30%;
+    }
+
+    .status {
+      margin-left: 20px;
+      float: right;
+      max-width: 33.5%;
+    }
+  }
+.descrição{
+  color: #000000;
+  font-size: 13px;
+}
+}
